@@ -14,7 +14,12 @@ const Users = Models.User;
 const passport = require('passport');
 require('./passport');
 
+const cors = require('cors');
+app.use(cors());
+
 let auth = require('./auth')(app);
+
+const { check, validationResult } = require('express-validator');
 
 
 mongoose.connect('mongodb://localhost:27017/cfdb', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -91,7 +96,18 @@ app.get('/movies/director/:directorName', passport.authenticate('jwt', { session
 
 //Allow new users to register
 
-app.post('/users', (req, res) => {
+app.post('/users', [
+    check('Username', 'Username is required').isLength({ min: 5 }),
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail()
+], (req, res) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+    let hashedPassword = Users.hashPassword(req.body.Password);
+
     Users.findOne({ 'Username': req.body.Username })
         .then((user) => {
             if (user) {
@@ -99,7 +115,7 @@ app.post('/users', (req, res) => {
             } else {
                 Users.create({
                     Username: req.body.Username,
-                    Password: req.body.Password,
+                    Password: hashedPassword,
                     Email: req.body.Email,
                     Birthday: req.body.Birthday
                 })
@@ -112,6 +128,10 @@ app.post('/users', (req, res) => {
                     })
             }
         })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
 
 });
 
@@ -193,7 +213,10 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 });
 
-app.listen(8080, () => {
-    console.log('Your app is listening on port 8080.');
+const port = process.env.PORT || 8080;
+
+app.listen(port, '0.0.0.0', () => {
+    console.log('Listening on Port ' + port);
 });
+
 
