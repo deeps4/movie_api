@@ -17,8 +17,6 @@ require('./passport');
 const cors = require('cors');
 app.use(cors());
 
-let auth = require('./auth')(app);
-
 const { check, validationResult } = require('express-validator');
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -28,6 +26,8 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 app.use(morgan('common'));
 app.use('/', express.static('public'));
 app.use(bodyParser.json());
+
+let auth = require('./auth')(app);
 
 app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
