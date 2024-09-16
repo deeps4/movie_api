@@ -20,7 +20,7 @@
         <thead>
             <tr>
                 <th>REQUEST</th>
-                <th>URL</th>
+                <th>Endpoint URL</th>
                 <th>HTTP METHOD</th>
                 <th>QUERY PARAMETERS</th>
                 <th>REQUEST DATA FORMAT</th>
@@ -78,46 +78,51 @@
                 <td>/users</td>
                 <td>POST</td>
                 <td>None</td>
-                <td>None</td>
-                <td> A JSON object holding data about a new user (username,
-                    email, password).</td>
+                <td>{ "Username" : "testuser1", "Password" : "password1",
+                    "Email" : "testuser1@gmail.com", "Birthday" : "10/10/1990" }</td>
+                <td> A JSON object with user details including UUID. Example: { "Username": "testuser1", "Password":
+                    "password1", "Email": "testuser1@gmail.com", "Birthday": "1990-10-09T23:00:00.000Z",
+                    "FavoriteMovies": [], "_id": "6670390ffb6f33d439ee8bb8", "__v": 0 }</td>
             </tr>
             <tr>
                 <td>Allow users to update their user info.</td>
                 <td>/users/:id</td>
                 <td>PUT</td>
                 <td>id</td>
-                <td> A JSON object holding updated data about the username.</td>
+                <td> { "Username" : "updtestuser1", "Password" : "updpassword1", "Email" : "updtestuser1@gmail.com",
+                    "Birthday" : "10/10/1990" }</td>
                 <td> A confirmation message and updated user data or an error
-                    message.</td>
+                    message.{ "_id": "6670390ffb6f33d439ee8bb8",
+                    "Username": "updtestuser1", "Password": "updpassword1", "Email": "updtestuser1@gmail.com",
+                    "Birthday": "1990-10-09T23:00:00.000Z", "FavoriteMovies": [], "__v": 0 }</td>
             </tr>
             <tr>
                 <td>Allow users to add movie in therir favourite movies.</td>
-                <td>/users/:id/:movieTitle</td>
+                <td>/users/:id/movies/:movieID</td>
                 <td>POST</td>
-                <td>id <br>
-                    movieTitle
-                </td>
-                <td> A JSON object holding data about a favorite movie.</td>
-                <td>A confirmation or an error message.</td>
+                <td>None</td>
+                <td>None</td>
+                <td>A JSON object with updated user data including favorite movies. Example: { "_id":
+                    "6670390ffb6f33d439ee8bb8", "Username": "updtestuser1", "Password": "updpassword1", "Email":
+                    "updtestuser1@gmail.com", "Birthday": "1990-10-09T23:00:00.000Z", "FavoriteMovies": [
+                    "665db63e036f555077cdcdf6" ], "__v": 0 }</td>
             </tr>
             <tr>
                 <td>Allow users to remove movie from their favourite movies.</td>
-                <td>/users/:id/:movieTitle</td>
+                <td>/users/:Username/movies/:MovieID</td>
                 <td>DELETE</td>
-                <td>
-                    id <br>
-                    movieTitle
+                <td>None</td>
+                <td>None</td>
+                <td>A JSON object with updated user data after removing the movie. Example: { "_id":
+                    "6670390ffb6f33d439ee8bb8", "Username": "updtestuser1", "Password": "updpassword1", "Email":
+                    "updtestuser1@gmail.com", "Birthday": "1990-10-09T23:00:00.000Z", "FavoriteMovies": [], "__v": 0 }
                 </td>
-                <td> A JSON object holding data about a favorite movie to
-                    remove.</td>
-                <td>A confirmation or an error message.</td>
             </tr>
             <tr>
                 <td>Allow existing users to deregister.</td>
-                <td>/users/:id</td>
+                <td>/users/:Username</td>
                 <td>DELETE</td>
-                <td>id</td>
+                <td>None</td>
                 <td>None</td>
                 <td>A confirmation or an error message.</td>
             </tr>
