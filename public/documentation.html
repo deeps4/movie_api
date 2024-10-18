@@ -34,8 +34,18 @@
                 <td>/login</td>
                 <td>Post</td>
                 <td>None</td>
-                <td> { "Username" : "test", "Password" : "test11111","Email" : "test@gmail.com", "Birthday" :
-                    "18/04/1986" }</td>
+                <td>{
+                    "user": {
+                    "_id": "6711466ac9020e920ccf8fdt",
+                    "Username": "Name",
+                    "Email": "Email@gmail.com",
+                    "Birthday": "1999-01-11T23:00:00.000Z",
+                    "FavouriteMovies": [],
+                    "__v": 0
+                    },
+                    "token":
+                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzExNDY2YWMwMzIwZTQwMmNjZjRiY2YiLCJVc2VybmFtZSI6IlJhbWVzaCIGYEUOSHjstn3JkIjoiJDJiJDEwJFRhQ3VwcXRNdllYZFNEdUliaHd5Y2VWWmI3R2hCaktMOVFtUUtESWc5eWUyclNsV1BMazhpIiwiRW1haWwiOiJyYW1AZ21haWwuY29tIiwiQmlydGhkYXkiOiIxOTk5LTAyLTAzVDIzOjAwOjAwLjAwMFoiLCJGYXZvdXJpdGVNb3ZpZXMiOltdLCJfX3YiOjAsImlhdCI6MTcyOTE5MDEyMywiZXhwIjoxNzI5Nzk0OTIzLCJzdWIiOiJSYW1lc2gifQ.QvkPOZUGiKWFVWN5a8sphS7z6xbixYn6ilrcbhjLNAs"
+                    }</td>
                 <td></td>
             </tr>
             <tr>
@@ -57,7 +67,7 @@
             </tr>
             <tr>
                 <td>Return data by genre by name/title.</td>
-                <td>/movies/genre/:genreName</td>
+                <td>/movies/genres/:genreName</td>
                 <td>GET</td>
                 <td>genreName</td>
                 <td>None</td>
@@ -66,7 +76,7 @@
             </tr>
             <tr>
                 <td>Return data about a director by name.</td>
-                <td>/movies/director/:directorName</td>
+                <td>/movies/directors/:directorName</td>
                 <td>GET</td>
                 <td>directorName</td>
                 <td>None</td>
@@ -80,9 +90,7 @@
                 <td>None</td>
                 <td>{ "Username" : "testuser1", "Password" : "password1",
                     "Email" : "testuser1@gmail.com", "Birthday" : "10/10/1990" }</td>
-                <td> A JSON object with user details including UUID. Example: { "Username": "testuser1", "Password":
-                    "password1", "Email": "testuser1@gmail.com", "Birthday": "1990-10-09T23:00:00.000Z",
-                    "FavoriteMovies": [], "_id": "6670390ffb6f33d439ee8bb8", "__v": 0 }</td>
+                <td> User created: Name</td>
             </tr>
             <tr>
                 <td>Allow users to update their user info.</td>
@@ -92,9 +100,14 @@
                 <td> { "Username" : "updtestuser1", "Password" : "updpassword1", "Email" : "updtestuser1@gmail.com",
                     "Birthday" : "10/10/1990" }</td>
                 <td> A confirmation message and updated user data or an error
-                    message.{ "_id": "6670390ffb6f33d439ee8bb8",
-                    "Username": "updtestuser1", "Password": "updpassword1", "Email": "updtestuser1@gmail.com",
-                    "Birthday": "1990-10-09T23:00:00.000Z", "FavoriteMovies": [], "__v": 0 }</td>
+                    message. {
+                    "_id": "6711466ac9020e920ccf8fdt",
+                    "Username": "Name",
+                    "Email": "Email@gmail.com",
+                    "Birthday": "1999-01-11T23:00:00.000Z",
+                    "FavouriteMovies": [],
+                    "__v": 0
+                    }</td>
             </tr>
             <tr>
                 <td>Allow users to add movie in therir favourite movies.</td>
@@ -102,10 +115,15 @@
                 <td>POST</td>
                 <td>None</td>
                 <td>None</td>
-                <td>A JSON object with updated user data including favorite movies. Example: { "_id":
-                    "6670390ffb6f33d439ee8bb8", "Username": "updtestuser1", "Password": "updpassword1", "Email":
-                    "updtestuser1@gmail.com", "Birthday": "1990-10-09T23:00:00.000Z", "FavoriteMovies": [
-                    "665db63e036f555077cdcdf6" ], "__v": 0 }</td>
+                <td>A JSON object with updated user data including favorite movies. Example:
+                    {
+                    "_id": "6711466ac9020e920ccf8fdt",
+                    "Username": "Name",
+                    "Email": "Email@gmail.com",
+                    "Birthday": "1999-01-11T23:00:00.000Z",
+                    "FavouriteMovies": ["23d83105a462a92672bfa945"],
+                    "__v": 0
+                    }</td>
             </tr>
             <tr>
                 <td>Allow users to remove movie from their favourite movies.</td>
@@ -113,9 +131,7 @@
                 <td>DELETE</td>
                 <td>None</td>
                 <td>None</td>
-                <td>A JSON object with updated user data after removing the movie. Example: { "_id":
-                    "6670390ffb6f33d439ee8bb8", "Username": "updtestuser1", "Password": "updpassword1", "Email":
-                    "updtestuser1@gmail.com", "Birthday": "1990-10-09T23:00:00.000Z", "FavoriteMovies": [], "__v": 0 }
+                <td>A confirmation that movie has been removed.
                 </td>
             </tr>
             <tr>

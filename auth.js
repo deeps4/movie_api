@@ -19,8 +19,7 @@ module.exports = (router) => {
         passport.authenticate('local', { session: false }, (error, user, info) => {
             if (error || !user) {
                 return res.status(400).json({
-                    message: 'Something is not right',
-                    user: user
+                    message: 'Something is not right'
                 });
             }
             req.login(user, { session: false }, (error) => {
@@ -28,7 +27,8 @@ module.exports = (router) => {
                     res.send(error);
                 }
                 let token = generateJWTToken(user.toJSON());
-                return res.json({ user, token });
+                const { Password, ...userWithoutPassword } = user.toJSON();
+                return res.json({ user: userWithoutPassword, token });
             });
         })(req, res);
     });

@@ -66,7 +66,7 @@ app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) =
 })
 
 
-app.get('/movies/genre/:genreName', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.genreName })
         .then((movie) => {
             res.json(movie);
@@ -81,7 +81,7 @@ app.get('/movies/genre/:genreName', passport.authenticate('jwt', { session: fals
 
 //Return data about a director (bio, birth year, death year) by name
 
-app.get('/movies/director/:directorName', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies/directors/:directorName', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ 'Director.Name': req.params.directorName })
         .then((movie) => {
             res.json(movie.Director);
@@ -119,7 +119,7 @@ app.post('/users', [
                     Birthday: req.body.Birthday
                 })
                     .then((user) => {
-                        res.status(201).json(user);
+                        res.status(201).json(`User created: ${user.Username}`);
                     })
                     .catch((error) => {
                         console.error(error);
@@ -138,11 +138,12 @@ app.post('/users', [
 
 app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
 
+    const hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate({ 'Username': req.params.Username },
         {
             $set: {
                 Username: req.body.Username,
-                Password: req.body.Password,
+                Password: hashedPassword,
                 Email: req.body.Email,
                 Birthday: req.body.Birthday,
             }
@@ -184,7 +185,7 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
         { new: true })
 
         .then((user) => {
-            res.json(user);
+            res.json("Movie has been removed.");
         })
         .catch((err) => {
             console.error(err);
