@@ -150,13 +150,10 @@ app.post('/users', [
 //Allow users to update their user info (username);
 
 app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
-
-    const hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate({ 'Username': req.params.Username },
         {
             $set: {
                 Username: req.body.Username,
-                Password: hashedPassword,
                 Email: req.body.Email,
                 Birthday: req.body.Birthday,
             }
@@ -169,13 +166,11 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (r
             console.error(err);
             res.status(500).send('Error: ' + err);
         })
-
 });
 
 // Allow users to add a movie to their list of favorites (showing only a text that a movie has been added); 
 
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
-
     Users.findOneAndUpdate({ 'Username': req.params.Username },
         { $push: { "FavouriteMovies": req.params.MovieID } },
         { new: true })
@@ -223,7 +218,35 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
             console.error(err);
             res.status(500).send('Error: ' + err);
         });
+});
 
+// To change password for a user.
+app.post('/users/:Username/change-password', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Users.findOne({ Username: req.params.Username }).select("+Password")
+        .then((user) => {
+            if (user.validatePassword(req.body.OldPassword)) {
+                const hashedPassword = Users.hashPassword(req.body.Password);
+                Users.findOneAndUpdate({ 'Username': req.params.Username },
+                    {
+                        $set: {
+                            Password: hashedPassword,
+                        }
+                    })
+                    .then(() => {
+                        res.json({
+                            message: "Password updated successfully"
+                        })
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        res.status(500).send('Error: ' + err);
+                    })
+            } else {
+                res.status(401).json({
+                    errorMessage: 'Given old password is not correct.'
+                });
+            }
+        })
 });
 
 const port = process.env.PORT || 8080;

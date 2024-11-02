@@ -97,7 +97,7 @@
                 <td>/users/:id</td>
                 <td>PUT</td>
                 <td>id</td>
-                <td> { "Username" : "updtestuser1", "Password" : "updpassword1", "Email" : "updtestuser1@gmail.com",
+                <td> { "Username" : "updtestuser1", "Email" : "updtestuser1@gmail.com",
                     "Birthday" : "10/10/1990" }</td>
                 <td> A confirmation message and updated user data or an error
                     message. {
@@ -113,7 +113,7 @@
                 <td>Allow users to add movie in therir favourite movies.</td>
                 <td>/users/:id/movies/:movieID</td>
                 <td>POST</td>
-                <td>None</td>
+                <td>id, movieId</td>
                 <td>None</td>
                 <td>A JSON object with updated user data including favorite movies. Example:
                     {
@@ -129,7 +129,7 @@
                 <td>Allow users to remove movie from their favourite movies.</td>
                 <td>/users/:Username/movies/:MovieID</td>
                 <td>DELETE</td>
-                <td>None</td>
+                <td>Username, MovieID</td>
                 <td>None</td>
                 <td>A confirmation that movie has been removed.
                 </td>
@@ -138,9 +138,20 @@
                 <td>Allow existing users to deregister.</td>
                 <td>/users/:Username</td>
                 <td>DELETE</td>
-                <td>None</td>
+                <td>Username</td>
                 <td>None</td>
                 <td>A confirmation or an error message.</td>
+            </tr>
+            <tr>
+                <td>Allow logged in user to change password.</td>
+                <td>/users/:Username/change-password</td>
+                <td>POST</td>
+                <td>Username</td>
+                <td>{OldPassword: "Test@123" Password: "P@SSword"}</td>
+                <td>
+                    On Success: (200 status) - {message: "Password updated successfully"}
+                    On Error: (401 status) - {errorMessage: "Given old password is not correct."}
+                </td>
             </tr>
         </tbody>
     </table>
