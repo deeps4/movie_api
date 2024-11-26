@@ -5,6 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation</title>
+    <style>
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            word-wrap: break-word;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,16 +51,17 @@
                 <td>Post</td>
                 <td>None</td>
                 <td>{
-                    "user": {
-                    "_id": "6711466ac9020e920ccf8fdt",
-                    "Username": "Name",
-                    "Email": "Email@gmail.com",
-                    "Birthday": "1999-01-11T23:00:00.000Z",
-                    "FavouriteMovies": [],
-                    "__v": 0
+                    "user":{
+                    "_id":"6711466ac9020e920ccf8fdt",
+                    "Username":"Name",
+                    "Email":"Email@gmail.com",
+                    "Birthday":"1999-01-11T23:00:00.000Z",
+                    "FavouriteMovies":[
+
+                    ],
+                    "__v":0
                     },
-                    "token":
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzExNDY2YWMwMzIwZTQwMmNjZjRiY2YiLCJVc2VybmFtZSI6IlJhbWVzaCIGYEUOSHjstn3JkIjoiJDJiJDEwJFRhQ3VwcXRNdllYZFNEdUliaHd5Y2VWWmI3R2hCaktMOVFtUUtESWc5eWUyclNsV1BMazhpIiwiRW1haWwiOiJyYW1AZ21haWwuY29tIiwiQmlydGhkYXkiOiIxOTk5LTAyLTAzVDIzOjAwOjAwLjAwMFoiLCJGYXZvdXJpdGVNb3ZpZXMiOltdLCJfX3YiOjAsImlhdCI6MTcyOTE5MDEyMywiZXhwIjoxNzI5Nzk0OTIzLCJzdWIiOiJSYW1lc2gifQ.QvkPOZUGiKWFVWN5a8sphS7z6xbixYn6ilrcbhjLNAs"
+                    "token":"unique_token"
                     }</td>
                 <td></td>
             </tr>
@@ -57,8 +74,17 @@
                 <td>A JSON object holding data about all movies.</td>
             </tr>
             <tr>
+                <td>Return data of a single movie by ID.</td>
+                <td>/movies/:movieId</td>
+                <td>GET</td>
+                <td>movieId</td>
+                <td>None</td>
+                <td>A JSON object holding data about a single movie
+                    including description, genre, director, image URL.</td>
+            </tr>
+            <tr>
                 <td>Return data of a single movie by title.</td>
-                <td>/movies/:title</td>
+                <td>/movies/titles/:title</td>
                 <td>GET</td>
                 <td>title</td>
                 <td>None</td>
