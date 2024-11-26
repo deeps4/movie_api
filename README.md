@@ -72,7 +72,7 @@ The Movie API is a RESTful API designed for movie lovers. It provides detailed i
 
 ### 📚 API Documentation
 
-Detailed documentation for the Movie API is available [here](https://your-api-docs-url.com).
+Detailed documentation for the Movie API is available [here](https://my-movies-flix-05-b51bd5948ca6.herokuapp.com/documentation.html).
 
 ### 🛡️ Authentication & Security
 
