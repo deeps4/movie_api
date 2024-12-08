@@ -19,6 +19,7 @@ const allowedOrigins = [
     "http://localhost:8080",
     "http://localhost:1234",
     "https://deepa-myflixapp.netlify.app",
+    "https://deeps4.github.io/myFlix-Angular-client"
 ];
 
 app.use(
