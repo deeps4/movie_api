@@ -13,7 +13,34 @@ let generateJWTToken = (user) => {
     });
 }
 
-
+/**
+ * @name POST /login
+ * @summary User login endpoint.
+ * @description Authenticates a user and returns a JWT token and user data upon success.
+ * 
+ * @example Request body
+ * {
+ *  Username: "JohnDoe",
+ *  Password: "Test@123"
+ * }
+ *
+ * @example response - 200 - Success Response
+ * {
+ *   "user": {
+ *     "_id": "60f5b1c8c45e4c1b8c6f5678",
+ *     "Username": "john_doe",
+ *     "Email": "john.doe@example.com",
+ *     "Birthday": "1990-05-15T00:00:00.000Z",
+ *     "FavouriteMovies": ["60f5a4f8c45e4c1b8c6f1234"]
+ *   },
+ *   "token": "JWT_TOKEN_HERE"
+ * }
+ *
+ * @example response - 400 - Error Response
+ * {
+ *   "message": "Username or password is incorrect."
+ * }
+ */
 module.exports = (router) => {
     router.post('/login', (req, res) => {
         passport.authenticate('local', { session: false }, (error, user, info) => {

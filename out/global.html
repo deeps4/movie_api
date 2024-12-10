@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="DELETE/users/%7BUsername%7D"><span class="type-signature"></span>DELETE /users/{Username}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Delete a user</p>
+
+
+
+<div class="description">
+    Deletes a user account.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line480">line 480</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+"{username} was deleted."</code></pre>
+
+    <pre class="prettyprint"><code>response - 400 - Error Response
+"{username} was not found."</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="DELETE/users/%7BUsername%7D/movies/%7BMovieID%7D"><span class="type-signature"></span>DELETE /users/{Username}/movies/{MovieID}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Remove a movie from favorites</p>
+
+
+
+<div class="description">
+    Removes a movie from the user's favorite list.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line441">line 441</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+  {
+    "_id": "60f5b1c8c45e4c1b8c6f5678",
+    "Username": "john_doe",
+    "Email": "john.doe@example.com",
+    "Birthday": "1990-05-15T00:00:00.000Z",
+    "FavouriteMovies": ["60f5a4f8c45e4c1b8c6f1234"]
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="GET/movies"><span class="type-signature"></span>GET /movies<span class="type-signature"></span></h4>
+
+
+<p class="summary">Retrieve all movies</p>
+
+
+
+<div class="description">
+    Returns a list of all movies.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 201 - Success Response
+[
+  {
+    "_id": "60f5a4f8c45e4c1b8c6f1234",
+    "Title": "Inception",
+    "Description": "A thief who steals corporate secrets...",
+    "Genre": { "Name": "Science Fiction", "Description": "..." },
+    "Director": { "Name": "Christopher Nolan", "Bio": "..." },
+    "Actors": ["Leonardo DiCaprio"],
+    "ImagePath": "https://example.com/images/inception.jpg",
+    "Featured": true
+  }
+]</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="GET/movies/directors/%7BdirectorName%7D"><span class="type-signature"></span>GET /movies/directors/{directorName}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Retrieve director details</p>
+
+
+
+<div class="description">
+    Returns information about a movie's director.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line241">line 241</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+  {
+    "_id": "60f5a4f8c45e4c1b8c6f1234",
+    "Title": "Inception",
+    "Description": "A thief who steals corporate secrets...",
+    "Genre": { "Name": "Science Fiction", "Description": "..." },
+    "Director": { "Name": "Christopher Nolan", "Bio": "..." },
+    "Actors": ["Leonardo DiCaprio"],
+    "ImagePath": "https://example.com/images/inception.jpg",
+    "Featured": true
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="GET/movies/genres/%7BgenreName%7D"><span class="type-signature"></span>GET /movies/genres/{genreName}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Retrieve movies by genre</p>
+
+
+
+<div class="description">
+    Returns movies based on the genre name.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line202">line 202</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+  {
+    "_id": "60f5a4f8c45e4c1b8c6f1234",
+    "Title": "Inception",
+    "Description": "A thief who steals corporate secrets...",
+    "Genre": { "Name": "Science Fiction", "Description": "..." },
+    "Director": { "Name": "Christopher Nolan", "Bio": "..." },
+    "Actors": ["Leonardo DiCaprio"],
+    "ImagePath": "https://example.com/images/inception.jpg",
+    "Featured": true
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="GET/movies/titles/%7BTitle%7D"><span class="type-signature"></span>GET /movies/titles/{Title}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Retrieve a movie by title</p>
+
+
+
+<div class="description">
+    Returns a movie's details based on its title.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line129">line 129</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+  {
+    "_id": "60f5a4f8c45e4c1b8c6f1234",
+    "Title": "Inception",
+    "Description": "A thief who steals corporate secrets...",
+    "Genre": { "Name": "Science Fiction", "Description": "..." },
+    "Director": { "Name": "Christopher Nolan", "Bio": "..." },
+    "Actors": ["Leonardo DiCaprio"],
+    "ImagePath": "https://example.com/images/inception.jpg",
+    "Featured": true
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="GET/movies/%7BmovieId%7D"><span class="type-signature"></span>GET /movies/{movieId}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Retrieve a movie by ID</p>
+
+
+
+<div class="description">
+    Returns details of a specific movie using its ID.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line92">line 92</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+  {
+    "_id": "60f5a4f8c45e4c1b8c6f1234",
+    "Title": "Inception",
+    "Description": "A thief who steals corporate secrets...",
+    "Genre": { "Name": "Science Fiction", "Description": "..." },
+    "Director": { "Name": "Christopher Nolan", "Bio": "..." },
+    "Actors": ["Leonardo DiCaprio"],
+    "ImagePath": "https://example.com/images/inception.jpg",
+    "Featured": true
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="GET/users"><span class="type-signature"></span>GET /users<span class="type-signature"></span></h4>
+
+
+<p class="summary">Retrieve all users</p>
+
+
+
+<div class="description">
+    Returns a list of all registered users.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line166">line 166</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+[
+  {
+    "_id": "60f5b1c8c45e4c1b8c6f5678",
+    "Username": "john_doe",
+    "Email": "john.doe@example.com",
+    "Birthday": "1990-05-15T00:00:00.000Z",
+    "FavouriteMovies": ["60f5a4f8c45e4c1b8c6f1234"]
+  }
+]</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="POST/login"><span class="type-signature"></span>POST /login<span class="type-signature"></span></h4>
+
+
+<p class="summary">User login endpoint.</p>
+
+
+
+<div class="description">
+    Authenticates a user and returns a JWT token and user data upon success.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth.js.html">auth.js</a>, <a href="auth.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>Request body
+{
+ Username: "JohnDoe",
+ Password: "Test@123"
+}</code></pre>
+
+    <pre class="prettyprint"><code>response - 200 - Success Response
+{
+  "user": {
+    "_id": "60f5b1c8c45e4c1b8c6f5678",
+    "Username": "john_doe",
+    "Email": "john.doe@example.com",
+    "Birthday": "1990-05-15T00:00:00.000Z",
+    "FavouriteMovies": ["60f5a4f8c45e4c1b8c6f1234"]
+  },
+  "token": "JWT_TOKEN_HERE"
+}</code></pre>
+
+    <pre class="prettyprint"><code>response - 400 - Error Response
+{
+  "message": "Username or password is incorrect."
+}</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="POST/users"><span class="type-signature"></span>POST /users<span class="type-signature"></span></h4>
+
+
+<p class="summary">Register a new user</p>
+
+
+
+<div class="description">
+    Creates a new user account.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line280">line 280</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>request body
+  {
+    "Username": "john_doe",
+    "Password": "Test@123",
+    "Email": "john.doe@example.com",
+    "Birthday": "1990-05-15T00:00:00.000Z",
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 201 - Success Response
+"User created: {username}"</code></pre>
+
+    <pre class="prettyprint"><code>response - 422 - Error Response
+{
+ errors: [
+  {Username: 'Username is required'}, 
+  {Username: 'Username contains non alphanumeric characters - not allowed.'},
+  {Password: 'Password is required'},
+  {Email: 'Email does not appear to be valid'}
+ ]
+}</code></pre>
+
+    <pre class="prettyprint"><code>response - 400 - Error Response
+{username} already exists</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="POST/users/%7BUsername%7D/change-password"><span class="type-signature"></span>POST /users/{Username}/change-password<span class="type-signature"></span></h4>
+
+
+<p class="summary">Change user password</p>
+
+
+
+<div class="description">
+    Allows the user to update their password.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line516">line 516</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>Request body
+  {
+    "OldPassword": "OldPass123",
+    "Password": "Test@12345"
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 200 - Success Response
+{message: "Password updated successfully"}</code></pre>
+
+    <pre class="prettyprint"><code>response - 401 - Error Response
+"Given old password is not correct."</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="POST/users/%7BUsername%7D/movies/%7BMovieID%7D"><span class="type-signature"></span>POST /users/{Username}/movies/{MovieID}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Add a movie to favorites</p>
+
+
+
+<div class="description">
+    Adds a movie to the user's favorite movies list.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line402">line 402</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>response - 200 - Success Response
+  {
+    "_id": "60f5b1c8c45e4c1b8c6f5678",
+    "Username": "john_doe",
+    "Email": "john.doe@example.com",
+    "Birthday": "1990-05-15T00:00:00.000Z",
+    "FavouriteMovies": ["60f5a4f8c45e4c1b8c6f1234"]
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="PUT/users/%7BUsername%7D"><span class="type-signature"></span>PUT /users/{Username}<span class="type-signature"></span></h4>
+
+
+<p class="summary">Update user information</p>
+
+
+
+<div class="description">
+    Updates a user's username, email, or birthday.
+<br>
+This endpoint requires "Bearer Token Authentication" using a JWT token.
+<br>
+Include the token in the Authorization header as follows: Authorization: Bearer <JWT Token>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line352">line 352</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>request body
+  {
+    "Username": "john_doe",
+    "Email": "john.doe@example.com",
+    "Birthday": "1990-05-15T00:00:00.000Z",
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 200 - Success Response
+  {
+    "_id": "60f5b1c8c45e4c1b8c6f5678",
+    "Username": "john_doe",
+    "Email": "john.doe@example.com",
+    "Birthday": "1990-05-15T00:00:00.000Z",
+    "FavouriteMovies": ["60f5a4f8c45e4c1b8c6f1234"]
+  }</code></pre>
+
+    <pre class="prettyprint"><code>response - 500 - Error Response
+"Error: Something went wrong."</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#DELETE/users/%257BUsername%257D">DELETE /users/{Username}</a></li><li><a href="global.html#DELETE/users/%257BUsername%257D/movies/%257BMovieID%257D">DELETE /users/{Username}/movies/{MovieID}</a></li><li><a href="global.html#GET/movies">GET /movies</a></li><li><a href="global.html#GET/movies/directors/%257BdirectorName%257D">GET /movies/directors/{directorName}</a></li><li><a href="global.html#GET/movies/genres/%257BgenreName%257D">GET /movies/genres/{genreName}</a></li><li><a href="global.html#GET/movies/titles/%257BTitle%257D">GET /movies/titles/{Title}</a></li><li><a href="global.html#GET/movies/%257BmovieId%257D">GET /movies/{movieId}</a></li><li><a href="global.html#GET/users">GET /users</a></li><li><a href="global.html#POST/login">POST /login</a></li><li><a href="global.html#POST/users">POST /users</a></li><li><a href="global.html#POST/users/%257BUsername%257D/change-password">POST /users/{Username}/change-password</a></li><li><a href="global.html#POST/users/%257BUsername%257D/movies/%257BMovieID%257D">POST /users/{Username}/movies/{MovieID}</a></li><li><a href="global.html#PUT/users/%257BUsername%257D">PUT /users/{Username}</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Dec 10 2024 01:28:55 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
